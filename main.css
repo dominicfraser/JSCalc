@@ -1,1 +1,14 @@
-.
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 40px);
+  grid-template-rows: repeat(5, 40px);
+  grid-gap: 5px;
+}
+
+.zero-btn-span {
+  grid-column: span 2;
+}
+
+.equal-btn-span {
+  grid-row: span 2;
+}
