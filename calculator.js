@@ -1,14 +1,61 @@
 class Calculator {
     constructor() {
-        this.runningTotal = 0;
+        this.displayedTotal = 0 //main display
+        // this.fullOperationDisplay = 0 //second smaller display
+        this.runningTotal = 0
+        this.pendingOperator = false
+        this.firstEntry = true
+        this.currentEntry = ""
     }
 
-    add() {
-        this.runningTotal += 10;
-        console.log(this.runningTotal);
+    selectNumber(key){
+        this.currentEntry += key //concats it to string for multiple numbers
+console.log('currentEntry', this.currentEntry)
     }
+
+    selectOperand(op){
+      if (this.firstEntry === true){ 
+      //if its the first number then once a operator is pressed it automatically becomes the running total once an operand press signals that the number entry is complete
+        this.pendingOperator = op
+        this.runningTotal += parseFloat(this.currentEntry) //we've been concatenating strings
+        this.currentEntry = "" //ready for number two
+        this.firstEntry = false //only to reset on CE or AC(?)
+console.log('runningTotal', this.runningTotal)
+console.log('currentEntry', this. currentEntry)
+      } else {
+        if (op !== "="){ // if its the not the first time the operand has been pressed then start the operation, unless it is = in which case update the display
+          this.performOperation()
+          this.pendingOperator = op
+        } else {
+          this.displayedTotal = this.runningTotal += parseFloat(this.currentEntry)
+console.log('displayedTotal', this.displayedTotal)
+        }
+      }
+
+    }
+
+    performOperation(){
+        switch (this.pendingOperator){
+          case "+":
+            this.runningTotal += parseFloat(this.currentEntry)
+            this.currentEntry = ""
+console.log('runningTotal', this.runningTotal)
+console.log('currentEntry', this. currentEntry)
+            break
+          // case "-"
+          //   break
+          // case "*"
+          //   break
+          // case "/"
+          //   break
+        }
+    }
+
 }
 
 const cal = new Calculator 
-document.getElementById('test').onclick = () => {cal.add()}
-// ()=>{} anonoymous function / next we add the function from the new instance of the calculator class.  if we add it without putting it in, it breaks... :(
+
+document.getElementById('6-btn').onclick = () => {cal.selectNumber("6")}
+document.getElementById('+-btn').onclick = () => {cal.selectOperand("+")}
+document.getElementById('=-btn').onclick = () => {cal.selectOperand("=")}
+
