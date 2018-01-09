@@ -1,8 +1,12 @@
 .wrapper {
   display: grid;
   grid-template-columns: repeat(4, 40px);
-  grid-template-rows: repeat(5, 40px);
+  grid-template-rows: repeat(6, 40px);
   grid-gap: 5px;
+}
+
+.display {
+  grid-column: 1 / -1;
 }
 
 .zero-btn-span {
