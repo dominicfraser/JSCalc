@@ -1,1 +1,1 @@
-.
+console.log("Hiya Guys");
