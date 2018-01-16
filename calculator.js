@@ -28,7 +28,9 @@ class Calculator {
         this.performOperation()
         this.pendingOperator = op
       } else {
-        this.displayedTotal = this.runningTotal += parseFloat(this.currentEntry)
+        //this.displayedTotal = this.runningTotal += parseFloat(this.currentEntry)
+        this.performOperation()
+        this.displayedTotal = this.runningTotal
         console.log("displayedTotal", this.displayedTotal)
       }
     }
