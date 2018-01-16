@@ -28,7 +28,9 @@ class Calculator {
         this.performOperation()
         this.pendingOperator = op
       } else {
-        this.displayedTotal = this.runningTotal += parseFloat(this.currentEntry)
+        //this.displayedTotal = this.runningTotal += parseFloat(this.currentEntry)
+        this.performOperation()
+        this.displayedTotal = this.runningTotal
         console.log("displayedTotal", this.displayedTotal)
       }
     }
@@ -42,12 +44,24 @@ class Calculator {
         console.log("runningTotal", this.runningTotal)
         console.log("currentEntry", this.currentEntry)
         break
-      // case "-"
-      //   break
-      // case "*"
-      //   break
-      // case "/"
-      //   break
+      case "-":
+        this.runningTotal -= parseFloat(this.currentEntry)
+        this.currentEntry = ""
+        console.log("runningTotal", this.runningTotal)
+        console.log("currentEntry", this.currentEntry)
+        break
+      case "*":
+        this.runningTotal *= parseFloat(this.currentEntry)
+        this.currentEntry = ""
+        console.log("runningTotal", this.runningTotal)
+        console.log("currentEntry", this.currentEntry)
+        break
+      case "/":
+        this.runningTotal /= parseFloat(this.currentEntry)
+        this.currentEntry = ""
+        console.log("runningTotal", this.runningTotal)
+        console.log("currentEntry", this.currentEntry)
+        break
     }
   }
 }
