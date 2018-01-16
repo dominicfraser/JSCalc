@@ -42,12 +42,24 @@ class Calculator {
         console.log("runningTotal", this.runningTotal)
         console.log("currentEntry", this.currentEntry)
         break
-      // case "-"
-      //   break
-      // case "*"
-      //   break
-      // case "/"
-      //   break
+      case "-":
+        this.runningTotal -= parseFloat(this.currentEntry)
+        this.currentEntry = ""
+        console.log("runningTotal", this.runningTotal)
+        console.log("currentEntry", this.currentEntry)
+        break
+      case "*":
+        this.runningTotal *= parseFloat(this.currentEntry)
+        this.currentEntry = ""
+        console.log("runningTotal", this.runningTotal)
+        console.log("currentEntry", this.currentEntry)
+        break
+      case "/":
+        this.runningTotal /= parseFloat(this.currentEntry)
+        this.currentEntry = ""
+        console.log("runningTotal", this.runningTotal)
+        console.log("currentEntry", this.currentEntry)
+        break
     }
   }
 }
