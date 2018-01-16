@@ -36,6 +36,22 @@ class Calculator {
     }
   }
 
+  selectCancel(c) {
+    if (c === "AC") {
+      this.runningTotal = 0
+      this.pendingOperator = ""
+      this.currentEntry = ""
+      this.displayedTotal = 0
+      this.firstEntry = true
+    } else if (c === "CE") {
+      if (this.currentEntry === "") {
+        this.pendingOperator = ""
+      } else {
+        this.currentEntry = ""
+      }
+    }
+  }
+
   performOperation() {
     switch (this.pendingOperator) {
       case "+":

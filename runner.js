@@ -45,3 +45,9 @@ document.getElementById("div-btn").onclick = () => {
 document.getElementById("eq-btn").onclick = () => {
   cal.selectOperand("=")
 }
+document.getElementById("ac-btn").onclick = () => {
+  cal.selectCancel("AC")
+}
+document.getElementById("ce-btn").onclick = () => {
+  cal.selectCancel("CE")
+}
