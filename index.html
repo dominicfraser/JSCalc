@@ -3,28 +3,32 @@
 <head>
   <title>Javascript Calculator</title>
   <link href="main.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
 </head>
 <body>
+  <h1>JavaScript Calculator</h1>
   <div class="wrapper"> <!-- Calculator buttons grid -->
-    <div class="display"></div>
-    <button id="ac-btn">AC</button>
-    <button id="ce-btn">CE</button>
-    <button id="div-btn">/</button>
-    <button id="mul-btn">x</button>
-    <button id="7-btn">7</button>
-    <button id="8-btn">8</button>
-    <button id="9-btn">9</button>
-    <button id="min-btn">-</button>
-    <button id="4-btn">4</button>
-    <button id="5-btn">5</button>
-    <button id="6-btn">6</button>
-    <button id="add-btn">+</button>
-    <button id="1-btn">1</button>
-    <button id="2-btn">2</button>
-    <button id="3-btn">3</button>
-    <button id="eq-btn" class="equal-btn-span">=</button>
-    <button id="0-btn" class="zero-btn-span">0</button>
-    <button id="dot-btn">.</button>
+    <div class="display">
+      <p id="display"></p>
+    </div>
+    <button class="btn-color-clear" id="ac-btn">AC</button>
+    <button class="btn-color-clear" id="ce-btn">CE</button>
+    <button class="btn-color" id="div-btn">/</button>
+    <button class="btn-color" id="mul-btn">x</button>
+    <button class="btn-color" id="7-btn">7</button>
+    <button class="btn-color" id="8-btn">8</button>
+    <button class="btn-color" id="9-btn">9</button>
+    <button class="btn-color" id="min-btn">-</button>
+    <button class="btn-color" id="4-btn">4</button>
+    <button class="btn-color" id="5-btn">5</button>
+    <button class="btn-color" id="6-btn">6</button>
+    <button class="btn-color" id="add-btn">+</button>
+    <button class="btn-color" id="1-btn">1</button>
+    <button class="btn-color" id="2-btn">2</button>
+    <button class="btn-color" id="3-btn">3</button>
+    <button id="eq-btn" class="equal-btn-span btn-color">=</button>
+    <button id="0-btn" class="zero-btn-span btn-color">0</button>
+    <button class="btn-color" id="dot-btn">.</button>
   </div>
   <script src="calculator.js"></script>
   <script src="runner.js"></script>
