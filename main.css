@@ -1,4 +1,18 @@
+body {
+  background-color: #bbbbbb;
+}
+
+h1 {
+  padding: 10px;
+  text-align: center;
+}
+
 .wrapper {
+  background-color: #dddddd;
+  padding: 15px;
+  border-radius: 5px;
+  width: 175px;
+  margin: auto;
   display: grid;
   grid-template-columns: repeat(4, 40px);
   grid-template-rows: repeat(6, 40px);
@@ -7,6 +21,10 @@
 
 .display {
   grid-column: 1 / -1;
+  background-color: #D3D3D3;
+  padding: 0px;
+  text-align: right;
+  font-family: Orbitron, sans-serif;
 }
 
 .zero-btn-span {
@@ -15,4 +33,18 @@
 
 .equal-btn-span {
   grid-row: span 2;
+}
+
+.btn-color {
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  font-family: Orbitron, sans-serif;
+}
+
+.btn-color-clear {
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  font-family: Orbitron, sans-serif;
 }
