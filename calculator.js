@@ -62,8 +62,10 @@ class Calculator {
 
         // handle the length of the result if not/if exceeds nine characters
         if(String(this.displayedTotal).length <= 9) {
+          this.currentEntry = 0
           el.innerText = this.displayedTotal
         } else {
+          this.currentEntry = 0
           el.innerText = this.displayedTotal.toPrecision(9)
         }
       }
@@ -91,6 +93,9 @@ class Calculator {
 
       } else {
         this.currentEntry = ""
+
+        let el = document.getElementById("display")
+        el.innerText = this.currentEntry
       }
     }
   }
