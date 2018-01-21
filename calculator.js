@@ -7,6 +7,7 @@ class Calculator {
     this.firstEntry = true
     this.currentEntry = ""
     this.notPointPressed = true // boolean to indicate if dot has been pressed
+    this.noOperandPressed = true
   }
 
   selectNumber(key) {
@@ -28,6 +29,7 @@ class Calculator {
         el.innerText = this.currentEntry
       }
     }
+    this.noOperandPressed = true
   }
 
   selectOperand(op) {
@@ -42,34 +44,40 @@ class Calculator {
 
       let el = document.getElementById("display")
       el.innerText = this.pendingOperator
+      this.noOperandPressed = false
 
     } else {
-      if (op !== "=") {
+      if (op !== "=" && this.noOperandPressed === true) {
         // if its the not the first time the operand has been pressed then start the operation, unless it is = in which case update the display
         this.performOperation()
         this.pendingOperator = op
 
         let el = document.getElementById("display")
         el.innerText = this.pendingOperator
+        this.noOperandPressed = false
 
-      } else {
+      } else if (op === "=") {
         //this.displayedTotal = this.runningTotal += parseFloat(this.currentEntry)
         this.performOperation()
         this.displayedTotal = this.runningTotal
         console.log("displayedTotal", this.displayedTotal)
+        this.noOperandPressed = true
 
         let el = document.getElementById("display")
 
         // handle the length of the result if not/if exceeds nine characters
         if(String(this.displayedTotal).length <= 9) {
+          this.currentEntry = 0
           el.innerText = this.displayedTotal
         } else {
+          this.currentEntry = 0
           el.innerText = this.displayedTotal.toPrecision(9)
         }
       }
     }
     this.notPointPressed = true // once an operator has been used the dot can be used again
   }
+
 
   selectCancel(c) {
     if (c === "AC") {
@@ -91,6 +99,9 @@ class Calculator {
 
       } else {
         this.currentEntry = ""
+
+        let el = document.getElementById("display")
+        el.innerText = this.currentEntry
       }
     }
   }
