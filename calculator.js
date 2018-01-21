@@ -9,11 +9,15 @@ class Calculator {
   }
 
   selectNumber(key) {
-    this.currentEntry += key //concats it to string for multiple numbers
-    console.log("currentEntry", this.currentEntry)
+    // limit the key presses of numbers to 9 characters
+    if(this.currentEntry.length <= 9) {
+      this.currentEntry += key //concats it to string for multiple numbers
+      console.log("currentEntry", this.currentEntry)
 
-    let el = document.getElementById("display")
-    el.innerText = this.currentEntry
+
+      let el = document.getElementById("display")
+      el.innerText = this.currentEntry
+    }
   }
 
   selectOperand(op) {
@@ -45,7 +49,13 @@ class Calculator {
         console.log("displayedTotal", this.displayedTotal)
 
         let el = document.getElementById("display")
-        el.innerText = this.displayedTotal
+
+        // handle the length of the result if not/if exceeds nine characters
+        if(String(this.displayedTotal).length <= 9) {
+          el.innerText = this.displayedTotal
+        } else {
+          el.innerText = this.displayedTotal.toPrecision(9)
+        }
       }
     }
   }
@@ -67,7 +77,7 @@ class Calculator {
 
         let el = document.getElementById("display")
         el.innerText = this.currentEntry
-        
+
       } else {
         this.currentEntry = ""
       }
