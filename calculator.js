@@ -6,17 +6,27 @@ class Calculator {
     this.pendingOperator = false
     this.firstEntry = true
     this.currentEntry = ""
+    this.notPointPressed = true
   }
 
   selectNumber(key) {
     // limit the key presses of numbers to 9 characters
     if(this.currentEntry.length <= 9) {
-      this.currentEntry += key //concats it to string for multiple numbers
-      console.log("currentEntry", this.currentEntry)
+      if(key === "." && this.notPointPressed === true) {
+        this.currentEntry += key //concats it to string for multiple numbers
+        console.log("currentEntry", this.currentEntry)
 
+        let el = document.getElementById("display")
+        el.innerText = this.currentEntry
+        this.notPointPressed = false
+      }
+      else if (key != "."){
+        this.currentEntry += key //concats it to string for multiple numbers
+        console.log("currentEntry", this.currentEntry)
 
-      let el = document.getElementById("display")
-      el.innerText = this.currentEntry
+        let el = document.getElementById("display")
+        el.innerText = this.currentEntry
+      }
     }
   }
 
@@ -58,6 +68,7 @@ class Calculator {
         }
       }
     }
+    this.notPointPressed = true
   }
 
   selectCancel(c) {
