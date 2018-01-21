@@ -51,3 +51,6 @@ document.getElementById("ac-btn").onclick = () => {
 document.getElementById("ce-btn").onclick = () => {
   cal.selectCancel("CE")
 }
+document.getElementById("dot-btn").onclick = () => {
+  cal.selectNumber(".")
+}
