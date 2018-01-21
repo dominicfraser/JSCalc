@@ -13,11 +13,11 @@ h1 {
   box-shadow: 2px 2px gray;
   padding: 15px;
   border-radius: 10px;
-  width: 181px;
+  width: 185px;
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(4, 40px);
-  grid-template-rows: repeat(6, 40px);
+  grid-template-columns: repeat(4, 41px);
+  grid-template-rows: repeat(6, 41px);
   grid-gap: 7px;
 }
 
