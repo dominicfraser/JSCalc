@@ -6,19 +6,19 @@ class Calculator {
     this.pendingOperator = false
     this.firstEntry = true
     this.currentEntry = ""
-    this.notPointPressed = true
+    this.notPointPressed = true // boolean to indicate if dot has been pressed
   }
 
   selectNumber(key) {
     // limit the key presses of numbers to 9 characters
     if(this.currentEntry.length <= 9) {
-      if(key === "." && this.notPointPressed === true) {
+      if(key === "." && this.notPointPressed === true) { // if dot has not been pressed before
         this.currentEntry += key //concats it to string for multiple numbers
         console.log("currentEntry", this.currentEntry)
 
         let el = document.getElementById("display")
         el.innerText = this.currentEntry
-        this.notPointPressed = false
+        this.notPointPressed = false // dot has now been pressed so set to false
       }
       else if (key != "."){
         this.currentEntry += key //concats it to string for multiple numbers
@@ -68,7 +68,7 @@ class Calculator {
         }
       }
     }
-    this.notPointPressed = true
+    this.notPointPressed = true // once an operator has been used the dot can be used again
   }
 
   selectCancel(c) {
