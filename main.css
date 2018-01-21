@@ -3,28 +3,34 @@ body {
 }
 
 h1 {
-  padding: 10px;
+  padding: 20px;
   text-align: center;
+  font-family: Orbitron, sans-serif;
 }
 
 .wrapper {
   background-color: #dddddd;
+  box-shadow: 2px 2px gray;
   padding: 15px;
-  border-radius: 5px;
-  width: 175px;
+  border-radius: 10px;
+  width: 181px;
   margin: auto;
   display: grid;
   grid-template-columns: repeat(4, 40px);
   grid-template-rows: repeat(6, 40px);
-  grid-gap: 5px;
+  grid-gap: 7px;
 }
 
 .display {
   grid-column: 1 / -1;
-  background-color: #D3D3D3;
-  padding: 0px;
+  grid-row-gap: 10px;
+  background-color: #c3c2ab;
+  border: 2px solid #b4b39d;
+  border-radius: 5px;
+  padding-bottom: 10px;
   text-align: right;
   font-family: Orbitron, sans-serif;
+  font-size: 18px;
 }
 
 .zero-btn-span {
@@ -36,15 +42,23 @@ h1 {
 }
 
 .btn-color {
-  background-color: black;
+  background-color: #3a3a3a;
   color: white;
   border-radius: 10px;
+  border: solid 1px black;
   font-family: Orbitron, sans-serif;
+  box-shadow: 1px 1px #888888;
 }
 
 .btn-color-clear {
-  background-color: red;
+  background-color: #E34234;
   color: white;
   border-radius: 10px;
+  border: solid 1px #A91101;
   font-family: Orbitron, sans-serif;
+  box-shadow: 1px 1px #888888;
+}
+
+button:focus {
+  outline:0;
 }

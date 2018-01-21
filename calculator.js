@@ -12,8 +12,8 @@ class Calculator {
     this.currentEntry += key //concats it to string for multiple numbers
     console.log("currentEntry", this.currentEntry)
 
-    var el = document.getElementById("display");
-    el.innerText = this.currentEntry;
+    let el = document.getElementById("display")
+    el.innerText = this.currentEntry
   }
 
   selectOperand(op) {
@@ -26,22 +26,26 @@ class Calculator {
       console.log("runningTotal", this.runningTotal)
       console.log("currentEntry", this.currentEntry)
 
-      var el = document.getElementById("display");
-      el.innerText = this.currentEntry;
+      let el = document.getElementById("display")
+      el.innerText = this.pendingOperator
+
     } else {
       if (op !== "=") {
         // if its the not the first time the operand has been pressed then start the operation, unless it is = in which case update the display
         this.performOperation()
         this.pendingOperator = op
-        var el = document.getElementById("display");
-        el.innerText = this.runningTotal;
+
+        let el = document.getElementById("display")
+        el.innerText = this.pendingOperator
+
       } else {
         //this.displayedTotal = this.runningTotal += parseFloat(this.currentEntry)
         this.performOperation()
         this.displayedTotal = this.runningTotal
         console.log("displayedTotal", this.displayedTotal)
-        var el = document.getElementById("display");
-        el.innerText = this.displayedTotal;
+
+        let el = document.getElementById("display")
+        el.innerText = this.displayedTotal
       }
     }
   }
@@ -53,9 +57,17 @@ class Calculator {
       this.currentEntry = ""
       this.displayedTotal = 0
       this.firstEntry = true
+
+      let el = document.getElementById("display")
+      el.innerText = this.displayedTotal
+
     } else if (c === "CE") {
       if (this.currentEntry === "") {
         this.pendingOperator = ""
+
+        let el = document.getElementById("display")
+        el.innerText = this.currentEntry
+        
       } else {
         this.currentEntry = ""
       }
