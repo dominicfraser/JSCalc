@@ -1,7 +1,5 @@
 class Calculator {
   constructor() {
-    this.displayedTotal = 0 //main display
-    // this.fullOperationDisplay = 0 //second smaller display
     this.runningTotal = 0
     this.pendingOperator = false
     this.firstEntry = true
@@ -57,19 +55,20 @@ class Calculator {
         this.updateDisplay(this.pendingOperator)
         this.noOperandPressed = false
       } else if (op === "=") {
-        //this.displayedTotal = this.runningTotal += parseFloat(this.currentEntry)
         this.performOperation()
-        this.displayedTotal = this.runningTotal
-        console.log("displayedTotal", this.displayedTotal)
+        console.log("runningTotal", this.runningTotal)
         this.noOperandPressed = true
+        this.pendingOperator = ""
+        this.currentEntry = ""
+        this.firstEntry = true
 
         // handle the length of the result if not/if exceeds nine characters
-        if (String(this.displayedTotal).length <= 9) {
-          this.currentEntry = 0
-          this.updateDisplay(this.displayedTotal)
+        if (String(this.runningTotal).length <= 9) {
+          this.updateDisplay(this.runningTotal)
+          this.runningTotal = 0
         } else {
-          this.currentEntry = 0
-          this.updateDisplay(this.displayedTotal.toPrecision(9))
+          this.updateDisplay(this.runningTotal.toPrecision(9))
+          this.runningTotal = 0
         }
       }
     }
@@ -78,13 +77,13 @@ class Calculator {
 
   selectCancel(c) {
     if (c === "AC") {
+      this.noOperandPressed = true
       this.runningTotal = 0
       this.pendingOperator = ""
       this.currentEntry = ""
-      this.displayedTotal = 0
       this.firstEntry = true
 
-      this.updateDisplay(this.displayedTotal)
+      this.updateDisplay(this.runningTotal)
     } else if (c === "CE") {
       if (this.currentEntry === "") {
         this.pendingOperator = ""
@@ -99,31 +98,35 @@ class Calculator {
   }
 
   performOperation() {
-    switch (this.pendingOperator) {
-      case "+":
-        this.runningTotal += parseFloat(this.currentEntry)
-        this.currentEntry = ""
-        console.log("runningTotal", this.runningTotal)
-        console.log("currentEntry", this.currentEntry)
-        break
-      case "-":
-        this.runningTotal -= parseFloat(this.currentEntry)
-        this.currentEntry = ""
-        console.log("runningTotal", this.runningTotal)
-        console.log("currentEntry", this.currentEntry)
-        break
-      case "*":
-        this.runningTotal *= parseFloat(this.currentEntry)
-        this.currentEntry = ""
-        console.log("runningTotal", this.runningTotal)
-        console.log("currentEntry", this.currentEntry)
-        break
-      case "/":
-        this.runningTotal /= parseFloat(this.currentEntry)
-        this.currentEntry = ""
-        console.log("runningTotal", this.runningTotal)
-        console.log("currentEntry", this.currentEntry)
-        break
+    if (this.currentEntry == "") {
+      this.updateDisplay(this.runningTotal)
+    } else {
+      switch (this.pendingOperator) {
+        case "+":
+          this.runningTotal += parseFloat(this.currentEntry)
+          this.currentEntry = ""
+          console.log("runningTotal", this.runningTotal)
+          console.log("currentEntry", this.currentEntry)
+          break
+        case "-":
+          this.runningTotal -= parseFloat(this.currentEntry)
+          this.currentEntry = ""
+          console.log("runningTotal", this.runningTotal)
+          console.log("currentEntry", this.currentEntry)
+          break
+        case "*":
+          this.runningTotal *= parseFloat(this.currentEntry)
+          this.currentEntry = ""
+          console.log("runningTotal", this.runningTotal)
+          console.log("currentEntry", this.currentEntry)
+          break
+        case "/":
+          this.runningTotal /= parseFloat(this.currentEntry)
+          this.currentEntry = ""
+          console.log("runningTotal", this.runningTotal)
+          console.log("currentEntry", this.currentEntry)
+          break
+      }
     }
   }
 }
