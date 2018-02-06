@@ -10,23 +10,27 @@ class Calculator {
     this.noOperandPressed = true
   }
 
+  updateDisplay(value) {
+    let el = document.getElementById("display")
+    el.innerText = value
+  }
+
   selectNumber(key) {
     // limit the key presses of numbers to 9 characters
-    if(this.currentEntry.length <= 9) {
-      if(key === "." && this.notPointPressed === true) { // if dot has not been pressed before
+    if (this.currentEntry.length <= 9) {
+      if (key === "." && this.notPointPressed === true) {
+        // if dot has not been pressed before
         this.currentEntry += key //concats it to string for multiple numbers
         console.log("currentEntry", this.currentEntry)
 
-        let el = document.getElementById("display")
-        el.innerText = this.currentEntry
+        this.updateDisplay(this.currentEntry)
+
         this.notPointPressed = false // dot has now been pressed so set to false
-      }
-      else if (key != "."){
+      } else if (key != ".") {
         this.currentEntry += key //concats it to string for multiple numbers
         console.log("currentEntry", this.currentEntry)
 
-        let el = document.getElementById("display")
-        el.innerText = this.currentEntry
+        this.updateDisplay(this.currentEntry)
       }
     }
     this.noOperandPressed = true
@@ -42,20 +46,16 @@ class Calculator {
       console.log("runningTotal", this.runningTotal)
       console.log("currentEntry", this.currentEntry)
 
-      let el = document.getElementById("display")
-      el.innerText = this.pendingOperator
+      this.updateDisplay(this.pendingOperator)
       this.noOperandPressed = false
-
     } else {
       if (op !== "=" && this.noOperandPressed === true) {
         // if its the not the first time the operand has been pressed then start the operation, unless it is = in which case update the display
         this.performOperation()
         this.pendingOperator = op
 
-        let el = document.getElementById("display")
-        el.innerText = this.pendingOperator
+        this.updateDisplay(this.pendingOperator)
         this.noOperandPressed = false
-
       } else if (op === "=") {
         //this.displayedTotal = this.runningTotal += parseFloat(this.currentEntry)
         this.performOperation()
@@ -63,21 +63,18 @@ class Calculator {
         console.log("displayedTotal", this.displayedTotal)
         this.noOperandPressed = true
 
-        let el = document.getElementById("display")
-
         // handle the length of the result if not/if exceeds nine characters
-        if(String(this.displayedTotal).length <= 9) {
+        if (String(this.displayedTotal).length <= 9) {
           this.currentEntry = 0
-          el.innerText = this.displayedTotal
+          this.updateDisplay(this.displayedTotal)
         } else {
           this.currentEntry = 0
-          el.innerText = this.displayedTotal.toPrecision(9)
+          this.updateDisplay(this.displayedTotal.toPrecision(9))
         }
       }
     }
     this.notPointPressed = true // once an operator has been used the dot can be used again
   }
-
 
   selectCancel(c) {
     if (c === "AC") {
@@ -87,21 +84,16 @@ class Calculator {
       this.displayedTotal = 0
       this.firstEntry = true
 
-      let el = document.getElementById("display")
-      el.innerText = this.displayedTotal
-
+      this.updateDisplay(this.displayedTotal)
     } else if (c === "CE") {
       if (this.currentEntry === "") {
         this.pendingOperator = ""
 
-        let el = document.getElementById("display")
-        el.innerText = this.currentEntry
-
+        this.updateDisplay(this.currentEntry)
       } else {
         this.currentEntry = ""
 
-        let el = document.getElementById("display")
-        el.innerText = this.currentEntry
+        this.updateDisplay(this.currentEntry)
       }
     }
   }
